@@ -4,12 +4,14 @@ namespace App\Filament\Resources\DepartmentResource\RelationManagers;
 
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Form;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Checkbox;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -49,7 +51,13 @@ class CategoriesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('name')
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                TextColumn::make('name')
+                ->sortable()
+                ->searchable(),
+                TextColumn::make('parent.name')
+                ->sortable()
+                ->searchable(),
+                IconColumn::make('active')
             ])
             ->filters([
                 //
