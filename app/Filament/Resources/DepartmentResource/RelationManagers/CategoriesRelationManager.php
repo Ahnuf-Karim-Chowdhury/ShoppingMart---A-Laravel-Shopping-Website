@@ -58,6 +58,7 @@ class CategoriesRelationManager extends RelationManager
                 ->sortable()
                 ->searchable(),
                 IconColumn::make('active')
+                ->boolean()
             ])
             ->filters([
                 //
