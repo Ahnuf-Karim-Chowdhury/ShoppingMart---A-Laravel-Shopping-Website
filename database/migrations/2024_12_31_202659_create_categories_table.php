@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -26,10 +27,9 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        // Note to future self :: Add order By Desc Time Here 
-
-        /* DB::statement('ALTER TABLE categories ADD COLUMN order_attribute TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
-        DB::statement('CREATE INDEX order_attribute_index ON categories (order_attribute DESC)'); */
+        //  order By Desc Time Here 
+        DB::statement('ALTER TABLE categories ADD COLUMN order_attribute TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+        DB::statement('CREATE INDEX order_attribute_index ON categories (order_attribute DESC)');
     }
 
     /**
