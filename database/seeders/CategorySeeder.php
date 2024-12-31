@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+// php artisan migrate:fresh --seed
 class CategorySeeder extends Seeder
 {
     /** 
@@ -58,6 +58,57 @@ class CategorySeeder extends Seeder
                 'name' => 'Cameras',
                 'department_id' => 1,
                 'parent_id' => 1, // Child of Electronics
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            
+            //SmartPhones
+            [
+                'name' => 'Android',
+                'department_id' => 1, // Assuming 'SmartPhones' is part of the Electronics department (ID 1)
+                'parent_id' => 2, // Child of SmartPhones (ID 2)
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'iPhones',
+                'department_id' => 1, // Assuming 'SmartPhones' is part of the Electronics department (ID 1)
+                'parent_id' => 2, // Child of SmartPhones (ID 2)
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            // Laptops - Asus, HP, Acer, Lenovo
+            [
+                'name' => 'Asus',
+                'department_id' => 1, // Assuming 'Computers' is part of the Electronics department (ID 1)
+                'parent_id' => 3, // Child of Laptops (ID 3)
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'HP',
+                'department_id' => 1, // Assuming 'Computers' is part of the Electronics department (ID 1)
+                'parent_id' => 3, // Child of Laptops (ID 3)
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Acer',
+                'department_id' => 1, // Assuming 'Computers' is part of the Electronics department (ID 1)
+                'parent_id' => 3, // Child of Laptops (ID 3)
+                'active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Lenovo',
+                'department_id' => 1, // Assuming 'Computers' is part of the Electronics department (ID 1)
+                'parent_id' => 3, // Child of Laptops (ID 3)
                 'active' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -559,7 +610,8 @@ class CategorySeeder extends Seeder
 
         ];
 
-        // Insert categories into the database
+        // Inserted categories into the database
         DB::table('categories')->insert($categories);
     }
 }
+
