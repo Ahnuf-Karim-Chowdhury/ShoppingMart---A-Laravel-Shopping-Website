@@ -152,9 +152,11 @@ class DepartmentSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+
+            
         ];
 
-        // Insert the departments into the database
+        // Inserted the departments into the database
         DB::table('departments')->insert($departments);
     }
 }
