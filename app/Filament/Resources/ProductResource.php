@@ -23,7 +23,7 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                //
+                
             ]);
     }
 
