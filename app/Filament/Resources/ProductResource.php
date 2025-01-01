@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use Forms\Components\Grid;
 use App\RolesEnum;
 use Filament\Facades\Filament;
+use Filament\Tables\Columns\TextColumn;
 
 
 
@@ -108,7 +109,21 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title')
+                ->sortable()
+                ->words(10)
+                ->searchable(),
+
+                TextColumn::make('status')
+                ->badge()
+                ->colors(ProductStatusEnum::colors()),
+
+                TextColumn::make('department.name'),
+                TextColumn::make('category.name'),
+                TextColumn::make('created_at')
+                ->dateTime(),
+
+
             ])
             ->filters([
                 //
