@@ -14,23 +14,22 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('title',2000);
-            $table->string('slug',2000);
+            $table->string('title', 2000);
+            $table->string('slug', 2000);
             $table->longText('description');
             $table->foreignId('department_id')
-            ->index()
-            ->constrained('departments');
+                ->index()
+                ->constrained('departments');
             $table->foreignId('category_id')
-            ->index()
-            ->constrained('categories');
-            $table->decimal('price',20,40);
+                ->index()
+                ->constrained('categories');
+            $table->decimal('price', 38, 20); // Updated precision and scale
             $table->string('status')->index();
             $table->integer('quantity')->nullable();
-            $table->foreignIdFor(User::class,'created_by');
-            $table->foreignIdFor(User::class,'updated_by');
+            $table->foreignIdFor(User::class, 'created_by');
+            $table->foreignIdFor(User::class, 'updated_by');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
-            
         });
     }
 
