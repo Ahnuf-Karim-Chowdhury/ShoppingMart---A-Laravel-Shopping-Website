@@ -20,10 +20,7 @@ use Forms\Components\Grid;
 use App\RolesEnum;
 use Filament\Facades\Filament;
 use Filament\Tables\Columns\TextColumn;
-
-
-
-
+use Filament\Tables\Filters\SelectFilter;
 
 class ProductResource extends Resource
 {
@@ -126,7 +123,13 @@ class ProductResource extends Resource
 
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                ->options(ProductStatusEnum::labels()),
+
+                SelectFilter::make('department_id')
+                ->relationship('department','name'),
+
+                
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
