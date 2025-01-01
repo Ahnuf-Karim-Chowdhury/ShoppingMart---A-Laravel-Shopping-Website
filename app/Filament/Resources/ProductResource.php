@@ -17,6 +17,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Forms\Components\Grid;
+use App\RolesEnum;
+use Filament\Facades\Filament;
+
 
 
 
@@ -135,4 +138,11 @@ class ProductResource extends Resource
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
+
+    public static function canViewAny(): bool { 
+        /** @var \App\Models\User */
+        $user = Filament::auth()->user(); 
+        return $user && ($user->hasRole(RolesEnum::Admin) || $user->hasRole(RolesEnum::Vendor));
+    }
+    
 }
