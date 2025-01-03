@@ -77,5 +77,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "medialibrary-pro": {
+            "type": "composer",
+            "url": "https://spatie.be/nova-packages"
+        }
+    }
 }

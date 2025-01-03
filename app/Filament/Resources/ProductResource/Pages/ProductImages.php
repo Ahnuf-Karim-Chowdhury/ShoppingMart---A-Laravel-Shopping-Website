@@ -11,6 +11,8 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 class ProductImages extends EditRecord
 {
     protected static string $resource = ProductResource::class;
+
+    protected static ?string $navigationIcon = 'heroicon-s-photo';
     
     public function form(Form $form):Form {
       return $form->schema([

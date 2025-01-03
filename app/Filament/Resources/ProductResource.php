@@ -25,6 +25,7 @@ use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class ProductResource extends Resource
 {
@@ -112,6 +113,11 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                SpatieMediaLibraryImageColumn::make('images')
+                ->collection('images')
+                ->label('image')
+                ->limit(1)
+                ->conversion('thumb'),
                 TextColumn::make('title')
                     ->sortable()
                     ->words(10)
