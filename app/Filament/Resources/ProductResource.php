@@ -6,6 +6,7 @@ use App\Enums\ProductStatusEnum;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ProductImages;
+use App\Filament\Resources\ProductResource\Pages\ProductVariationTypes;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
@@ -31,7 +32,7 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon  = 'heroicon-c-queue-list';
     protected static SubNavigationPosition $SubNavigationPosition = SubNavigationPosition::End;
     public static function form(Form $form): Form
     {
@@ -163,7 +164,8 @@ class ProductResource extends Resource
     {
         return $page->generateNavigationItems([
             EditProduct::class,
-            ProductImages::class
+            ProductImages::class,
+            ProductVariationTypes::class,
         ]);
     }
     public static function getPages(): array
@@ -173,6 +175,7 @@ class ProductResource extends Resource
             'create' => Pages\CreateProduct::route('/create'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
             'images' => Pages\ProductImages::route('/{record}/images'),
+            'variations' => Pages\ProductVariationTypes::route('/{record}/variations'),
         ];
     }
 
